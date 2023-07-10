@@ -1,0 +1,7 @@
+{
+  "name": "toolObj",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}
