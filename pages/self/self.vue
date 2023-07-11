@@ -63,7 +63,7 @@
 						<view class="right"><text class="iconfont icon-a-10-you"></text></view>
 					</view>
 					<view class="item">
-						<view class="left">
+						<view class="left" @click="gotomycomment">
 							<text class="iconfont icon-a-21-xiugai"></text>
 							<text class="text">评论过的</text>
 						</view>
@@ -73,7 +73,7 @@
 
 				<view class="group">
 					<view class="item">
-						<view class="left">
+						<view class="left" @click="show = true">
 							<text class="iconfont icon-a-32-wenjian"></text>
 							<text class="text">关于</text>
 						</view>
@@ -99,6 +99,13 @@
 				</view>
 			</view>
 		</view>
+		<view>
+			<u-popup :show="show" @close="close" :round="20">
+				<view class="pop">
+					<text>基于uniCloud和阿里云开发</text>
+				</view>
+			</u-popup>
+		</view>
 	</view>
 </template>
 
@@ -110,7 +117,8 @@ export default {
 		return {
 			belikednum: 0,
 			artnum: 0,
-			comnum: 0
+			comnum: 0,
+			show: false
 		};
 	},
 	computed: {
@@ -125,6 +133,10 @@ export default {
 		this.getnum();
 	},
 	methods: {
+		close() {
+			this.show = false;
+		},
+		//退出登录
 		logout() {
 			if (!this.hasLogin) {
 				return;
@@ -138,6 +150,7 @@ export default {
 				}
 			});
 		},
+		//个人信息
 		gotoUserInfo() {
 			if (this.hasLogin) {
 				uni.navigateTo({
@@ -150,20 +163,30 @@ export default {
 				});
 			}
 		},
+		//我的长文
 		gotoList() {
 			if (!this.hasLogin) {
 				return;
 			}
 			uni.navigateTo({
-				url: '/pages/quanzi_article/list'
+				url: '/subPackages/quanzi/mylist/mylist'
 			});
 		},
+		//我的点赞
 		gotomylike() {
 			if (!this.hasLogin) {
 				return;
 			}
 			uni.navigateTo({
-				url: '/pages/quanzi_like/list'
+				url: '/subPackages/quanzi/my/my?page=like'
+			});
+		},
+		gotomycomment() {
+			if (!this.hasLogin) {
+				return;
+			}
+			uni.navigateTo({
+				url: '/subPackages/quanzi/my/my?page=comment'
 			});
 		},
 		gotofeedback() {
@@ -216,7 +239,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .user {
 	.top {
 		height: 300rpx;
@@ -360,5 +383,11 @@ export default {
 			}
 		}
 	}
+}
+.pop {
+	height: 300rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 </style>

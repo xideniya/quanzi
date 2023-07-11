@@ -19,10 +19,7 @@
 				"navigationBarTitleText": "个人中心",
 				"enablePullDownRefresh": false
 			}
-
-		}
-
-		, {
+		}, {
 			"path": "uni_modules/uni-id-pages/pages/userinfo/deactivate/deactivate",
 			"style": {
 				"navigationBarTitleText": "注销账号"
@@ -115,16 +112,6 @@
 			}
 
 		}, {
-			"path": "pages/quanzi_article/list",
-			"style": {
-				"navigationBarTitleText": "列表"
-			}
-		}, {
-			"path": "pages/quanzi_like/list",
-			"style": {
-				"navigationBarTitleText": "列表"
-			}
-		}, {
 			"path": "uni_modules/uni-feedback/pages/opendb-feedback/opendb-feedback",
 			"style": {
 				"navigationBarTitleText": "新增"
@@ -144,15 +131,33 @@
 			"style": {
 				"navigationBarTitleText": "详情"
 			}
-		}, {
-			"path": "pages/reply/reply",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-
 		}
 	],
+	"subPackages": [{
+		"root": "subPackages/quanzi",
+		"pages": [{
+				"path": "mylist/mylist",
+				"style": {
+					"navigationBarTitleText": "我的长文",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "my/my",
+				"style": {
+					"navigationBarTitleText": "我的",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "reply/reply",
+				"style": {
+					"navigationBarTitleText": "回复",
+					"enablePullDownRefresh": false
+				}
+			}
+		]
+	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "圈子",

@@ -78,7 +78,7 @@ export default {
 			}
 			uni.setStorageSync('comment', this.comment);
 			uni.navigateTo({
-				url: '/pages/reply/reply'
+				url: '/subPackages/quanzi/reply/reply'
 			});
 		}
 	}

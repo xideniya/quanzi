@@ -52,8 +52,7 @@ export default {
 						})
 						.getTemp(),
 					db.collection('quanzi_article').where({ delState: false }).field('_id,title').getTemp()
-				],
-				list: 'quanzi_article'
+				]
 			},
 			loadMore: {
 				contentdown: '',
