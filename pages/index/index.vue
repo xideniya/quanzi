@@ -60,11 +60,16 @@ export default {
 			size: 4
 		};
 	},
-	onLoad(e) {
+	onLoad() {
+		console.log('onload');
 		this.articleList = [];
 		this.getarticleList();
 		this.gettotal();
 		uni.$on('editevent', this.onEditEvent);
+	},
+	onPullDownRefresh() {
+		this.articleList = [];
+		this.getarticleList();
 	},
 	// 触底加载更多数据
 	onReachBottom() {
@@ -134,6 +139,7 @@ export default {
 				.get()
 				.then((res) => {
 					this.articleList = [...this.articleList, ...res.result.data];
+					uni.stopPullDownRefresh();
 					this.loading = false;
 					this.status = 'more';
 					// 登录后判断点赞高亮

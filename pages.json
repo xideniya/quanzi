@@ -2,7 +2,8 @@
 	"pages": [{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "圈子"
+				"navigationBarTitleText": "圈子",
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/edit/edit",
@@ -143,17 +144,15 @@
 			"style": {
 				"navigationBarTitleText": "详情"
 			}
+		}, {
+			"path": "pages/reply/reply",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
 		}
-	    ,{
-            "path" : "pages/reply/reply",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "圈子",
