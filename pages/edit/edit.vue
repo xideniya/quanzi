@@ -47,7 +47,7 @@ export default {
 	data() {
 		return {
 			showTool: false,
-			editorCtx: {},
+			editorContext: {},
 			highlight: {
 				zitibiaoti: false,
 				jiacu: false,
@@ -69,7 +69,6 @@ export default {
 			uni.setNavigationBarTitle({
 				title: '修改文章'
 			});
-			this.editArticle();
 		}
 		getProvince().then((res) => {
 			this.artobj.province = res;
@@ -80,7 +79,7 @@ export default {
 		editorFocus() {
 			this.showTool = true;
 		},
-		//富文本编辑器初始化
+		//富文本编辑器初始化（这是回调不是生命周期）
 		onready() {
 			uni.createSelectorQuery()
 				.in(this)
@@ -91,37 +90,39 @@ export default {
 						context: true
 					},
 					(res) => {
-						this.editorCtx = res.context;
+						this.editorContext = res.context;
+						//获取编辑器上下文后，数据回填
+						this.editArticle();
 					}
 				)
 				.exec();
 		},
-		//编辑文章
+		//被编辑文章数据回填
 		async editArticle() {
 			let res = await db.collection('quanzi_article').doc(this.articleId).get();
-			this.editorCtx.setContents({
+			this.editorContext.setContents({
 				html: res.result.data[0].content
 			});
 			this.artobj.title = res.result.data[0].title;
 		},
 		//分割线
 		fengexian() {
-			this.editorCtx.insertDivider();
+			this.editorContext.insertDivider();
 		},
 		// 标题
 		zitibiaoti() {
 			this.highlight.zitibiaoti = !this.highlight.zitibiaoti;
-			this.editorCtx.format('header', this.highlight.zitibiaoti ? 'h2' : false);
+			this.editorContext.format('header', this.highlight.zitibiaoti ? 'h2' : false);
 		},
 		//字体加粗
 		zitijiacu() {
 			this.highlight.jiacu = !this.highlight.jiacu;
-			this.editorCtx.format('bold');
+			this.editorContext.format('bold');
 		},
 		// 字体斜体
 		zitixieti() {
 			this.highlight.zitixieti = !this.highlight.zitixieti;
-			this.editorCtx.format('italic');
+			this.editorContext.format('italic');
 		},
 		// 对钩
 		duigoux() {
@@ -142,7 +143,7 @@ export default {
 							filePath: item.path,
 							cloudPath: item.name || cusName
 						});
-						this.editorCtx.insertImage({
+						this.editorContext.insertImage({
 							src: res.fileID
 						});
 					}
@@ -158,7 +159,7 @@ export default {
 		},
 		// 确认按钮
 		onconfirm() {
-			this.editorCtx.getContents({
+			this.editorContext.getContents({
 				success: (res) => {
 					this.artobj.desc = res.text.slice(0, 50);
 					this.artobj.content = res.html;

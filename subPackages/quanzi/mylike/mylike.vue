@@ -3,7 +3,7 @@
 		<unicloud-db
 			ref="udb"
 			v-slot:default="{ data, pagination, loading, hasMore, error }"
-			:collection="collectionList[page]"
+			:collection="collectionList"
 			field="article_id,publish_date,user_id,title"
 			orderby="publish_date desc"
 			:distinct="true"
@@ -33,18 +33,9 @@ const db = uniCloud.database();
 export default {
 	data() {
 		return {
-			collectionList: {
+			collectionList:
 				// 根据页面跳转时page参数的不同,查询数据库
-				comment: [
-					db
-						.collection('quanzi_comment')
-						.where({
-							user_id: db.getCloudEnv('$cloudEnv_uid')
-						})
-						.getTemp(),
-					db.collection('quanzi_article').where({ delState: false }).field('_id,title').getTemp()
-				],
-				like: [
+				[
 					db
 						.collection('quanzi_like')
 						.where({
@@ -52,23 +43,13 @@ export default {
 						})
 						.getTemp(),
 					db.collection('quanzi_article').where({ delState: false }).field('_id,title').getTemp()
-				]
-			},
+				],
 			loadMore: {
 				contentdown: '',
 				contentrefresh: '',
 				contentnomore: ''
 			}
 		};
-	},
-	onReady() {
-		uni.setNavigationBarTitle({
-			title: this.page === 'like' ? '我的点赞' : '评论过的'
-		});
-	},
-	onLoad(e) {
-		// 用于区分不同页面
-		this.page = e.page;
 	},
 	onPullDownRefresh() {
 		this.$refs.udb.loadData(

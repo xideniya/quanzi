@@ -178,7 +178,7 @@ export default {
 				return;
 			}
 			uni.navigateTo({
-				url: '/subPackages/quanzi/my/my?page=like'
+				url: '/subPackages/quanzi/mylike/mylike'
 			});
 		},
 		gotomycomment() {
@@ -186,7 +186,7 @@ export default {
 				return;
 			}
 			uni.navigateTo({
-				url: '/subPackages/quanzi/my/my?page=comment'
+				url: '/subPackages/quanzi/mycomment/mycomment'
 			});
 		},
 		gotofeedback() {

@@ -1,6 +1,6 @@
 <template>
 	<!-- 用文章ID添加一个动态类名，用于修改文章跳转到首页后，滚动条滚动到被修改文章位置 -->
-	<view class="home" :class="`c${article._id}`">
+	<view class="home" :class="[`c${article._id}`]">
 		<view class="top">
 			<view class="left">
 				<img :src="article.user_id[0].avatar_file?article.user_id[0].avatar_file.url:'../../static/images/user-default.jpg'"
