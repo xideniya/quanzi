@@ -48,22 +48,22 @@
 
 			<view class="list">
 				<view class="group">
-					<view class="item">
-						<view class="left" @click="gotoList">
+					<view class="item" @click="gotoList">
+						<view class="left">
 							<text class="iconfont icon-a-24-bianji"></text>
 							<text class="text">我的长文</text>
 						</view>
 						<view class="right"><text class="iconfont icon-a-10-you"></text></view>
 					</view>
-					<view class="item">
-						<view class="left" @click="gotomylike">
+					<view class="item" @click="gotomylike">
+						<view class="left">
 							<text class="iconfont icon-a-106-xihuan"></text>
 							<text class="text">我的点赞</text>
 						</view>
 						<view class="right"><text class="iconfont icon-a-10-you"></text></view>
 					</view>
-					<view class="item">
-						<view class="left" @click="gotomycomment">
+					<view class="item" @click="gotomycomment">
+						<view class="left">
 							<text class="iconfont icon-a-21-xiugai"></text>
 							<text class="text">评论过的</text>
 						</view>
@@ -72,15 +72,15 @@
 				</view>
 
 				<view class="group">
-					<view class="item">
-						<view class="left" @click="show = true">
+					<view class="item" @click="show = true">
+						<view class="left">
 							<text class="iconfont icon-a-32-wenjian"></text>
 							<text class="text">关于</text>
 						</view>
 						<view class="right"><text class="iconfont icon-a-10-you"></text></view>
 					</view>
-					<view class="item">
-						<view class="left" @click="gotofeedback">
+					<view class="item" @click="gotofeedback">
+						<view class="left">
 							<text class="iconfont icon-a-5-xinxi"></text>
 							<text class="text">意见反馈</text>
 						</view>
